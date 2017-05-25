@@ -1,9 +1,7 @@
 # coding: utf-8
 from __future__ import print_function
 import urllib
-
 import time
-
 from api_vk import table_vk_builder
 from get_expression import get_expression
 from req_builder import req_builder

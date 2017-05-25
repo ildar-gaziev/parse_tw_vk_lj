@@ -42,7 +42,7 @@ if __name__ == '__main__':
     except ImportError:
         from xml.etree.ElementTree import ElementTree
 
-    tw = urllib.urlopen("https://yandex.ru/blogs/rss/search?text=\"москва\"&numdoc=20&p=1&server=twitter.com")
+    tw = urllib.urlopen("https://yandex.ru/blogs/rss/search?text=\"москва\"&numdoc=5&p=1&server=twitter.com")
     tw_root = ElementTree(file=tw).getroot()
     wb, sheet1 = table_header()
     table_tw_builder(tw_root, sheet1, 1)
