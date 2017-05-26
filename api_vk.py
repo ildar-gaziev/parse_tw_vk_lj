@@ -8,7 +8,7 @@ except ImportError:
     from xml.etree.ElementTree import ElementTree
 import vk
 
-TOKEN = 'a36f0044a36f0044a36f004400a3333203aa36fa36f0044fa4d96bd4657957072be38b2'  # ключ vk
+TOKEN = ' '  # ключ vk
 session = vk.Session(access_token=TOKEN)  # авторизированя сессия
 vk_api = vk.API(session)
 
