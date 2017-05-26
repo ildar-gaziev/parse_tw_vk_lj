@@ -29,7 +29,7 @@ def table_lj_builder(lj_root, sheet, gn):
         if item.find('author') is None:
             print('(-1)', end=' ')  # не удалось получить автора
             continue
-        sheet.write(n, 1, item.find('author').text[7:][:-17])
+        sheet.write(n, 1, item.find('author').text)
         author = item.find('author').text + 'profile'
         foll = scrap_lj(author)
         sheet.write(n, 2, foll.rstrip())

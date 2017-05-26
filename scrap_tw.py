@@ -23,7 +23,7 @@ def table_tw_builder(tw_root, sheet, gn):
         if item.find('author') is None:
             print('(-1)', end=' ')  # не удалось получить автора
             continue
-        sheet.write(n, 1, item.find('author').text[19:])
+        sheet.write(n, 1, item.find('author').text)
         foll = scrap_tw(item.find('author').text)
         sheet.write(n, 2, foll.rstrip())
         sheet.write(n, 3, item.find('description').text)

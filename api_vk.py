@@ -8,7 +8,7 @@ except ImportError:
     from xml.etree.ElementTree import ElementTree
 import vk
 
-TOKEN = ' '  # ключ vk
+TOKEN = 'a36f0044a36f0044a36f004400a3333203aa36fa36f0044fa4d96bd4657957072be38b2'  # ключ vk
 session = vk.Session(access_token=TOKEN)  # авторизированя сессия
 vk_api = vk.API(session)
 
@@ -17,11 +17,16 @@ def table_vk_builder(vk_root, sheet, gn):
     n = gn
     print('vk: ', end='')
     for item in vk_root.iter('item'):
-        vk_id = item.find('{urn:yandex-blogs}journal').attrib['url'][14:]
+        login = item.find('{urn:yandex-blogs}journal').attrib['url']
+        vk_id = login[14:]
         if vk_id[0] == 'i':
             vk_id = vk_id[2:]
-            foll = vk_api.users.get(user_id=vk_id, fields=['followers_count'])[0]['followers_count']
-            sheet.write(n, 1, item.find('{urn:yandex-blogs}author').text)
+            try:
+                foll = vk_api.users.get(user_id=vk_id, fields=['followers_count'])[0]['followers_count']
+            except:
+                time.sleep(1.6)
+                continue
+            sheet.write(n, 1, login)
             sheet.write(n, 2, foll)
             sheet.write(n, 3, item.find('description').text)
             sheet.write(n, 4, item.find('link').text)
